@@ -1,0 +1,7 @@
+try {
+            Thread.sleep((long) PictureSlider.getValue() * 1000);
+            System.out.println("Switching to next image: ");
+            if (!images.isEmpty()) {
+                currentImageIndex = (currentImageIndex + 1) % images.size();
+                displayImage();
+            }
