@@ -51,6 +51,7 @@ public class ImageViewerWindowController extends Thread{
     private void handleBtnLoadAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select image files");
+        fileChooser.setInitialDirectory(new File("C:/Users/MadMe/Pictures"));
         fileChooser.getExtensionFilters().add(new ExtensionFilter("Images",
                 "*.png", "*.jpg", "*.gif", "*.tif", "*.bmp"));
         List<File> files = fileChooser.showOpenMultipleDialog(new Stage());
