@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,9 @@ public class ImageViewerWindowController extends Thread{
 
     @FXML
     Parent root;
+
+    @FXML
+    private Label fileText;
 
     @FXML
     private Button stopButton;
@@ -82,13 +86,16 @@ public class ImageViewerWindowController extends Thread{
     }
 
     @FXML
-    public void handleBtnStartSlideshow()
-    {
+    public void handleBtnStartSlideshow() throws InterruptedException {
        if(shownImage == null)
        {
            shownImage = new SlideImage(images, (int) PictureSlider.getValue(), currentImageIndex);
            shownImage.valueProperty().addListener((ov, oldImage, newImage) -> {
                imageView.setImage(newImage);
+
+               File imageFile = new File(newImage.getUrl());
+               fileText.setText(imageFile.getName());
+
                if(newImage != oldImage){
                    currentImageIndex = shownImage.getIndex();
                }

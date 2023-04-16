@@ -35,7 +35,7 @@ public class SlideImage extends Task<Image>{
                 updateValue(slideshowImage);
 
              try {
-                    Thread.sleep(time * 1000);
+                    Thread.sleep(time * 1000L);
                 } catch (InterruptedException i) {
                  if (isCancelled()) {
                         break;
